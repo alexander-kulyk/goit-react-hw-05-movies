@@ -3,6 +3,8 @@ import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { ItemTrandMovies, ListTrandMovies, Title } from "./Home.styled"
 
+
+
 export const Home = () => {
 
     const [movies, setMovies] = useState([]);

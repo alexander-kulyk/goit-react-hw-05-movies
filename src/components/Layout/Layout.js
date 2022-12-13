@@ -5,6 +5,7 @@ import { Heder, Nav, NavItem, NavItemLink, NavList } from "./Layout.styled"
 
 export const Layout = () =>{
     return(
+    <>
         <Heder>
             <Nav>
                 <NavList>
@@ -17,7 +18,9 @@ export const Layout = () =>{
 
                 </NavList>
             </Nav>
-            <Outlet/>
         </Heder>
+        <Outlet/>
+        
+    </>
     )
 }
