@@ -1,8 +1,8 @@
 import { getMovieById } from "API/fetchMovies";
 import { BackBtn } from "components/BackBtn/BackBtn";
 import { useState, useEffect } from "react";
-import { useLocation, useParams } from "react-router-dom";
-import { Img, PrimaryTitle, SecondTitle, Span, Text } from "./MovieDetails.styled";
+import { Link, Outlet, useLocation, useParams } from "react-router-dom";
+import { AddList, Img, ItemAddList, PrimaryTitle, SecondTitle, Span, Text } from "./MovieDetails.styled";
 
 
 
@@ -13,8 +13,7 @@ export const MovieDetails = () =>{
     const [movie, setMovie] = useState(null);
     const [error, setError] = useState(false);
 
-    const location = useLocation()
-    console.log(location)
+    const location = useLocation();
 
     useEffect(() => {
         const getMovie = async movieId =>{
@@ -23,7 +22,7 @@ export const MovieDetails = () =>{
 
                 const resp = await getMovieById(movieId);
                 const data = resp.data;
-                console.log(data)
+            
                 setMovie(data)
                 
             } catch (error) {
@@ -65,16 +64,25 @@ export const MovieDetails = () =>{
         <>
             <div>
                 <BackBtn type="button" location ={location}/>
+                <Img src={`https://image.tmdb.org/t/p/w500${backdrop_path}`} alt={title}/>
             </div>
             <div>
-            
-                <Img src={`https://image.tmdb.org/t/p/w500${backdrop_path}`} alt={title}/>
                 <PrimaryTitle>{title}<Span>({releaseYear[0]})</Span></PrimaryTitle>
                 <SecondTitle>Overview</SecondTitle>
                 <Text>{overview}</Text>
                 <SecondTitle>Genres</SecondTitle>
                 <Text>{genres.map(item => item.name).join(', ')}</Text>
-            
+            </div>
+            <div>
+                <Text>Additional information</Text>
+                <div>
+                    <AddList>
+                        <ItemAddList><Link to={'cast'}>Cast</Link></ItemAddList>
+                        <ItemAddList><Link to={'reviews'}>Reviews</Link></ItemAddList>
+                    </AddList>
+                    <Outlet/>
+                </div>
+
             </div>
         
         </>

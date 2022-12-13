@@ -23,6 +23,17 @@ export const Span = styled.span`
   
 `;
 
+export const AddList = styled.ul`
+  
+`;
+
+export const ItemAddList = styled.li`
+  
+`;
+
+
+
+
 
 
 

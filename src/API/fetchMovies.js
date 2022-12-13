@@ -15,5 +15,7 @@ export const getMovieById = async id =>{
     return await axios.get(`${BASE_URL}movie/${id}?api_key=${KEY}`)
 };
 
+export const getCredits = async id =>{
+    return await axios.get(`${BASE_URL}movie/${id}/credits?api_key=${KEY}`)
+};
 
- 
