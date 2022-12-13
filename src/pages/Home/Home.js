@@ -1,6 +1,6 @@
 import { getTrendingMovies } from "API/fetchMovies"
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { ItemTrandMovies, ListTrandMovies, Title } from "./Home.styled"
 
 
@@ -8,6 +8,7 @@ import { ItemTrandMovies, ListTrandMovies, Title } from "./Home.styled"
 export const Home = () => {
 
     const [movies, setMovies] = useState([]);
+    const  location = useLocation()
 
     useEffect(() => {
         const getMovies = async () =>{
@@ -36,7 +37,7 @@ export const Home = () => {
             <ListTrandMovies>
                 {movies.map(movie =>(
                 <ItemTrandMovies key={movie.id}>
-                    <Link to={`/movies/${movie.id}`}>{movie.title ?? 'no title'}</Link>
+                    <Link to={`/movies/${movie.id}`} state = {{from: location}}>{movie.title ?? 'no title'}</Link>
                 </ItemTrandMovies>))}
                 
             </ListTrandMovies>

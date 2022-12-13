@@ -1,6 +1,7 @@
 import { getMovieById } from "API/fetchMovies";
+import { BackBtn } from "components/BackBtn/BackBtn";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { Img, PrimaryTitle, SecondTitle, Span, Text } from "./MovieDetails.styled";
 
 
@@ -10,7 +11,10 @@ import { Img, PrimaryTitle, SecondTitle, Span, Text } from "./MovieDetails.style
 export const MovieDetails = () =>{
     const {movieId} = useParams();
     const [movie, setMovie] = useState(null);
-    const [error, setError] = useState(false)
+    const [error, setError] = useState(false);
+
+    const location = useLocation()
+    console.log(location)
 
     useEffect(() => {
         const getMovie = async movieId =>{
@@ -58,15 +62,21 @@ export const MovieDetails = () =>{
     
 
     return(
-        
-        <div>
-            <Img src={`https://image.tmdb.org/t/p/w500${backdrop_path}`} alt={title}/>
-            <PrimaryTitle>{title}<Span>({releaseYear[0]})</Span></PrimaryTitle>
-            <SecondTitle>Overview</SecondTitle>
-            <Text>{overview}</Text>
-            <SecondTitle>Genres</SecondTitle>
-            <Text>{genres.map(item => item.name).join(', ')}</Text>
+        <>
+            <div>
+                <BackBtn type="button" location ={location}/>
+            </div>
+            <div>
             
-        </div>
+                <Img src={`https://image.tmdb.org/t/p/w500${backdrop_path}`} alt={title}/>
+                <PrimaryTitle>{title}<Span>({releaseYear[0]})</Span></PrimaryTitle>
+                <SecondTitle>Overview</SecondTitle>
+                <Text>{overview}</Text>
+                <SecondTitle>Genres</SecondTitle>
+                <Text>{genres.map(item => item.name).join(', ')}</Text>
+            
+            </div>
+        
+        </>
     )
 }
