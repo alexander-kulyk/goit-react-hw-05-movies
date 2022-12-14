@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
 import { ActorName, ActorProfile, ItemActors, ListActors } from "./Cast.styled";
 import picture from '../../picture/no-image.jpg';
-import { number } from "prop-types";
+
 
 
 export  const Cast = () =>{
