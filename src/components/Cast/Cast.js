@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
 import { ActorName, ActorProfile, ItemActors, ListActors } from "./Cast.styled";
 import picture from '../../picture/no-image.jpg';
+import { number } from "prop-types";
 
 
 export  const Cast = () =>{
@@ -36,17 +37,21 @@ export  const Cast = () =>{
     }
 
 
-
-
     return(
 
         <ListActors>
-            { cast.map(({id, original_name, profile_path = picture }) => (
-                <ItemActors key={id}>
-                  <ActorProfile src={`https://image.tmdb.org/t/p/w500${profile_path}`} alt={original_name}/>
+            { cast.map(({id, original_name, profile_path }) => {
+
+                let profile
+                  profile_path !== null
+                    ? profile = `https://image.tmdb.org/t/p/w500${ profile_path }`
+                    : profile  = picture;
+
+               return <ItemActors key={id}>
+                  <ActorProfile src={profile} alt={original_name}/>
                   <ActorName>{original_name}</ActorName>
                 </ItemActors>
-            ))}
+          })}
 
         </ListActors>
 

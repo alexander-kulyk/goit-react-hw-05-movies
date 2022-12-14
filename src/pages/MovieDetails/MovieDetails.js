@@ -58,7 +58,6 @@ export const MovieDetails = () =>{
     const releaseYear = release_date?.split('-')
     
     
-
     return(
         <div>
             <div>
