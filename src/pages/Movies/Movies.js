@@ -1,18 +1,21 @@
 import { getSearchMovie } from "API/fetchMovies";
-import { ListMovies } from "components/ListMovies/ListMovies";
+//import { ListMovies } from "components/ListMovies/ListMovies";
 import { SearchBox } from "components/SearchBox/SearchBox"
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense, lazy } from "react";
 import { useSearchParams } from "react-router-dom";
 
 
-export const Movies = () =>{
+const Movies = () =>{
 
     const [searchParams, setSearchParams] = useSearchParams();
     const [query, setQuery] = useState('');
     const [data, setData] = useState([])
     const filterParam = searchParams.get('query') ?? '';
 
-    console.log(filterParam)
+    const ListMovies = lazy(()=> import('../../components/ListMovies/ListMovies'))
+
+
+
 
     useEffect(() => {
 
@@ -48,10 +51,17 @@ export const Movies = () =>{
             handleChangeInput =  {handleChangeInput}
             handleSubmit = {handleSubmit}
             />
-            <ListMovies movies = {data}/>
+           <Suspense fallback ={null}>
+                <ListMovies movies = {data}/>
+           </Suspense>
 
         </div>
     )
-}
+};
+
+
+
+
+export default Movies;
 
 

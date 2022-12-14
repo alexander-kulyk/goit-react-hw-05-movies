@@ -41,18 +41,17 @@ export  const Cast = () =>{
 
         <ListActors>
             { cast.map(({id, original_name, profile_path }) => {
-
-                let profile
+              
+                let image
                   profile_path !== null
-                    ? profile = `https://image.tmdb.org/t/p/w500${ profile_path }`
-                    : profile  = picture;
+                    ? image = `https://image.tmdb.org/t/p/w500${ profile_path }`
+                    : image  = picture;
 
                return <ItemActors key={id}>
-                  <ActorProfile src={profile} alt={original_name}/>
+                  <ActorProfile src={image} alt={original_name}/>
                   <ActorName>{original_name}</ActorName>
                 </ItemActors>
-          })}
-
+              })}
         </ListActors>
 
     )

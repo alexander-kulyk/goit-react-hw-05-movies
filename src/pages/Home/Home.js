@@ -1,6 +1,6 @@
 import { getTrendingMovies } from "API/fetchMovies"
-import { ListMovies } from "components/ListMovies/ListMovies"
-import { useState, useEffect } from "react";
+import ListMovies  from "components/ListMovies/ListMovies"
+import { useState, useEffect, Suspense } from "react";
 import { Title } from "./Home.styled"
 
 
@@ -29,7 +29,9 @@ const Home = () => {
     return(
         <>
             <Title>Trending today</Title>
-            <ListMovies movies ={movies}/>
+            <Suspense fallback={<div>...Loading</div>}>
+                <ListMovies movies ={movies}/>
+            </Suspense>
         </>
     )
 }

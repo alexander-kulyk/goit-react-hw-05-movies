@@ -20,7 +20,7 @@ import { Heder, Nav, NavItem, NavItemLink, NavList } from "./Layout.styled"
                 </NavList>
             </Nav>
         </Heder>
-       <Suspense fallback={<div>...Loading</div>}>
+       <Suspense fallback={null}>
             <Outlet/>
        </Suspense>
         
