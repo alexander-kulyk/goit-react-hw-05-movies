@@ -43,7 +43,7 @@ export  const Cast = () =>{
         <ListActors>
             { cast.map(({id, original_name, profile_path = picture }) => (
                 <ItemActors key={id}>
-                  <ActorProfile src={`https://image.tmdb.org/t/p/w500${profile_path ?? picture}`} alt={original_name}/>
+                  <ActorProfile src={`https://image.tmdb.org/t/p/w500${profile_path}`} alt={original_name}/>
                   <ActorName>{original_name}</ActorName>
                 </ItemActors>
             ))}

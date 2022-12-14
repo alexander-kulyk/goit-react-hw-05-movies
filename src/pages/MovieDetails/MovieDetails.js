@@ -39,7 +39,6 @@ export const MovieDetails = () =>{
         return(
             <PrimaryTitle>Something is wrong! Try another movie</PrimaryTitle>
         )
-        
     }
 
     if (movie === null) {
@@ -61,7 +60,7 @@ export const MovieDetails = () =>{
     
 
     return(
-        <>
+        <div>
             <div>
                 <BackBtn type="button" location ={location}/>
                 <Img src={`https://image.tmdb.org/t/p/w500${backdrop_path}`} alt={title}/>
@@ -85,6 +84,6 @@ export const MovieDetails = () =>{
 
             </div>
         
-        </>
+        </div>
     )
 }
