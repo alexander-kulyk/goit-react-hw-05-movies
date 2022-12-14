@@ -1,9 +1,10 @@
+import { Suspense } from "react"
 import { Outlet } from "react-router-dom"
 import { Heder, Nav, NavItem, NavItemLink, NavList } from "./Layout.styled"
 
 
 
-export const Layout = () =>{
+ const Layout = () =>{
     return(
     <>
         <Heder>
@@ -19,8 +20,11 @@ export const Layout = () =>{
                 </NavList>
             </Nav>
         </Heder>
-        <Outlet/>
+       <Suspense fallback={<div>...Loading</div>}>
+            <Outlet/>
+       </Suspense>
         
     </>
     )
 }
+export default Layout;
