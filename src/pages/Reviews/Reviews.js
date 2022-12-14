@@ -1,6 +1,6 @@
 import { getReviewsMovies } from "API/fetchMovies";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router-dom";
 import { ReviewsList,  ReviewsItems, Title, Text } from "./Reviews.styled";
 
 
@@ -17,7 +17,7 @@ export const Reviews = () => {
 
                const resp = await getReviewsMovies(id);
                const data = resp.data.results;
-               setReviews(data)
+               setReviews(data);
 
                 
             } catch (error) {
@@ -36,13 +36,19 @@ export const Reviews = () => {
     
     
     return(
-        <ReviewsList>
-            {reviews.map(({author,content}) =>(
-                <ReviewsItems>
-                    <Title>{author}</Title>
-                    <Text>{content}</Text>
-                </ReviewsItems>
-            ))}
-        </ReviewsList>
+        <>
+            {reviews.length > 0
+                ?   <ReviewsList>
+                        {reviews.map(({author,content, id}) =>(
+                            <ReviewsItems key={id}>
+                                <Title>{author}</Title>
+                                <Text>{content}</Text>
+                            </ReviewsItems>))}
+                    </ReviewsList>
+                : <p>No reviews</p>
+            
+            }
+        </>
+        
     )
 }

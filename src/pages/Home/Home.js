@@ -25,11 +25,7 @@ export const Home = () => {
         }
         getMovies()
       
-    }, [])
-    
-
-    
-
+    }, []);
 
     return(
         <>
