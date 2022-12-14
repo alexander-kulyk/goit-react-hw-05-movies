@@ -1,5 +1,5 @@
 import { getTrendingMovies } from "API/fetchMovies"
-import { ListTrandMovies } from "components/ListTrandMovies/ListTrandMovies"
+import { ListMovies } from "components/ListMovies/ListMovies"
 import { useState, useEffect } from "react";
 import { Title } from "./Home.styled"
 
@@ -8,7 +8,6 @@ import { Title } from "./Home.styled"
 export const Home = () => {
 
     const [movies, setMovies] = useState([]);
-    
 
     useEffect(() => {
         const getMovies = async () =>{
@@ -30,7 +29,7 @@ export const Home = () => {
     return(
         <>
             <Title>Trending today</Title>
-            <ListTrandMovies movies ={movies}/>
+            <ListMovies movies ={movies}/>
         </>
     )
 }

@@ -1,15 +1,15 @@
 import { Link, useLocation } from "react-router-dom"
-import { ItemMovies, ListMovies } from "./ListTrandMovies.styled"
+import { Item, List } from "./ListMovies.styled"
 
 
-export const ListTrandMovies  = ({movies}) =>{
+export const ListMovies  = ({movies}) =>{
     const  location = useLocation()
     return(
-        <ListMovies>
+        <List>
             {movies.map(movie =>(
-                <ItemMovies key={movie.id}>
+                <Item key={movie.id}>
                     <Link to={`/movies/${movie.id}`} state = {{from: location}}>{movie.title ?? 'no title'}</Link>
-                </ItemMovies>))}
-        </ListMovies>
+                </Item>))}
+        </List>
     )
 }

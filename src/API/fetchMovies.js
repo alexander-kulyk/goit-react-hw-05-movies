@@ -23,3 +23,8 @@ export const getCredits = async id =>{
 export const getReviewsMovies = async id =>{
     return await axios.get(`${BASE_URL}movie/${id}/reviews?api_key=${KEY}`)
 };
+
+
+export const getSearchMovie = async query =>{
+    return await axios.get(`${BASE_URL}search/movie/?query=${query}&api_key=${KEY}`)
+};
