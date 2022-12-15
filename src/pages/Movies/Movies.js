@@ -1,9 +1,12 @@
+import { toast } from 'react-toastify';
+
 import { getSearchMovie } from "API/fetchMovies";
 //import { ListMovies } from "components/ListMovies/ListMovies";
 import { SearchBox } from "components/SearchBox/SearchBox"
 import { useState, useEffect, Suspense, lazy } from "react";
 import { useSearchParams } from "react-router-dom";
 
+import 'react-toastify/dist/ReactToastify.css';
 
 const Movies = () =>{
 
@@ -24,10 +27,20 @@ const Movies = () =>{
         }
 
       const getMovies = async query  =>{
-            const resp = await getSearchMovie(query);
-            const data = resp.data.results;
+            try {
+                const resp = await getSearchMovie(query);
+                const data = resp.data.results;
 
-            setData(data);
+                setData(data);
+
+                if (data.length === 0) {
+                    throw new Error('Not a valid word');
+                }
+            } catch (error) {
+                toast(error.message, {
+                    position: toast.POSITION.BOTTOM_CENTER
+                })
+            }
         }
 
       getMovies(filterParam)
@@ -42,7 +55,15 @@ const Movies = () =>{
     };
 
     const handleSubmit = () =>{
+        if (query === '') {
+            toast('Write something', {
+                position: toast.POSITION.BOTTOM_CENTER
+            });
+            
+        }
         setSearchParams(query !== '' ? {query} : {});
+
+        
     }
 
     return(

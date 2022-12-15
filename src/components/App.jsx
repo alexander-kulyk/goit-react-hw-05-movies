@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Layout from "./Layout/Layout";
+import {  ToastContainer } from 'react-toastify';
 
 import { MovieDetails } from "pages/MovieDetails/MovieDetails";
 import { lazy } from "react";
@@ -24,6 +25,7 @@ export const App = () => {
             </Route>
         </Route>
       </Routes>
+      <ToastContainer autoClose={3000}/>
   </>
     
   );

@@ -23,7 +23,7 @@ const Cast = () =>{
             
            const resp = await getCredits(movieId);
            const data = resp.data.cast;
-           setCast(data)
+           setCast(data);
 
         } catch (error) {
             
