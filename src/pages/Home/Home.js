@@ -6,17 +6,21 @@ import { useState, useEffect } from "react";
 import { Title } from "./Home.styled";
 
 import 'react-toastify/dist/ReactToastify.css';
+import { Loader } from 'components/Loader/Loader';
 
 
 
 const Home = () => {
 
     const [movies, setMovies] = useState([]);
+    const [loader, setLoader] = useState(false);
 
     useEffect(() => {
         const getMovies = async () =>{
             
             try {
+
+                setLoader(true);
     
                 const resp = await getTrendingMovies()
                 const data = resp.data.results;
@@ -30,6 +34,8 @@ const Home = () => {
                 toast(error.message, {
                     position: toast.POSITION.BOTTOM_CENTER
                 })
+            } finally{
+                setLoader(false);
             }
         }
         getMovies()
@@ -39,10 +45,9 @@ const Home = () => {
     return(
         <>
             <Title>Trending today</Title>
-            <ListMovies movies ={movies}/>
+            {loader ? <Loader/> : < ListMovies movies ={movies}/>}
         </>
     )
 };
-
 
 export default Home;

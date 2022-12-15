@@ -1,3 +1,4 @@
+//import { Loader } from "components/Loader/Loader"
 import { Suspense } from "react"
 import { Outlet } from "react-router-dom"
 import { Heder, Nav, NavItem, NavItemLink, NavList } from "./Layout.styled"

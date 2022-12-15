@@ -1,21 +1,25 @@
 import { toast } from 'react-toastify';
 
 import { getSearchMovie } from "API/fetchMovies";
-//import { ListMovies } from "components/ListMovies/ListMovies";
 import { SearchBox } from "components/SearchBox/SearchBox"
-import { useState, useEffect, Suspense, lazy } from "react";
+import { useState, useEffect} from "react";
 import { useSearchParams } from "react-router-dom";
+import ListMovies from '../../components/ListMovies/ListMovies';
+import { Loader } from 'components/Loader/Loader';
 
 import 'react-toastify/dist/ReactToastify.css';
+
 
 const Movies = () =>{
 
     const [searchParams, setSearchParams] = useSearchParams();
     const [query, setQuery] = useState('');
-    const [data, setData] = useState([])
+    const [data, setData] = useState([]);
+    const [loader, setLoader] = useState(false);
+
     const filterParam = searchParams.get('query') ?? '';
 
-    const ListMovies = lazy(()=> import('../../components/ListMovies/ListMovies'))
+    //const ListMovies = lazy(()=> import('../../components/ListMovies/ListMovies'))
 
 
 
@@ -27,7 +31,9 @@ const Movies = () =>{
         }
 
       const getMovies = async query  =>{
+
             try {
+                setLoader(true)
                 const resp = await getSearchMovie(query);
                 const data = resp.data.results;
 
@@ -40,6 +46,8 @@ const Movies = () =>{
                 toast(error.message, {
                     position: toast.POSITION.BOTTOM_CENTER
                 })
+            }finally{
+                setLoader(false)
             }
         }
 
@@ -69,13 +77,10 @@ const Movies = () =>{
     return(
         <div>
             <SearchBox 
-            handleChangeInput =  {handleChangeInput}
-            handleSubmit = {handleSubmit}
+                handleChangeInput =  {handleChangeInput}
+                handleSubmit = {handleSubmit}
             />
-           <Suspense fallback ={null}>
-                <ListMovies movies = {data}/>
-           </Suspense>
-
+           {loader ? <Loader/> : <ListMovies movies = {data}/>}
         </div>
     )
 };
