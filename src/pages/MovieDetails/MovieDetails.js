@@ -1,3 +1,5 @@
+
+import { toast } from 'react-toastify';
 import { getMovieById } from "API/fetchMovies";
 import { BackBtn } from "components/BackBtn/BackBtn";
 import { Loader } from "components/Loader/Loader";
@@ -5,6 +7,7 @@ import { useState, useEffect } from "react";
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import { AddList, Img, ItemAddList, PrimaryTitle, SecondTitle, Span, Text } from "./MovieDetails.styled";
 
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -32,7 +35,11 @@ export const MovieDetails = () =>{
                 setMovie(data)
                 
             } catch (error) {
+                
                 setError(true)
+                toast(error.message, {
+                    position: toast.POSITION.BOTTOM_CENTER
+                })
                 
             }finally{
               setLoader(false)
