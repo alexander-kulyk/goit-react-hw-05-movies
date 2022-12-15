@@ -6,7 +6,7 @@ import picture from '../../picture/no-image.jpg';
 
 
 
-export  const Cast = () =>{
+const Cast = () =>{
 
     const {movieId} = useParams();
     const [cast, setCast] = useState(null);
@@ -22,8 +22,8 @@ export  const Cast = () =>{
             
            const resp = await getCredits(movieId);
            const data = resp.data.cast;
-           console.log(data)
            setCast(data)
+
         } catch (error) {
             
         }
@@ -56,3 +56,7 @@ export  const Cast = () =>{
 
     )
 }
+
+
+
+export default Cast;
