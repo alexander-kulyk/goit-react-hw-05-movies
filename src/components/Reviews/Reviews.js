@@ -1,7 +1,7 @@
 import { getReviewsMovies } from "API/fetchMovies";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { ReviewsList,  ReviewsItems, Title, Text } from "./Reviews.styled";
+import { ReviewsList,  ReviewsItems, Title, Text, Message } from "./Reviews.styled";
 
 
 
@@ -45,7 +45,7 @@ const Reviews = () => {
                                 <Text>{content}</Text>
                             </ReviewsItems>))}
                     </ReviewsList>
-                : <p>No reviews</p>
+                : <Message>No reviews</Message>
             
             }
         </>

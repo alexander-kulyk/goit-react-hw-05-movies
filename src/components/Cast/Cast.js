@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
 import { ActorName, ActorProfile, ItemActors, ListActors } from "./Cast.styled";
 import picture from '../../picture/no-image.jpg';
+import { Message } from "components/Reviews/Reviews.styled";
 
 
 
@@ -36,11 +37,11 @@ const Cast = () =>{
       return;
     }
 
-
     return(
 
         <ListActors>
-            { cast.map(({id, original_name, profile_path }) => {
+            {cast.length > 0 
+              ? cast.map(({id, original_name, profile_path }) => {
               
                 let image
                   profile_path !== null
@@ -51,7 +52,9 @@ const Cast = () =>{
                   <ActorProfile src={image} alt={original_name}/>
                   <ActorName>{original_name}</ActorName>
                 </ItemActors>
-              })}
+              })
+            : <Message>No Cast</Message>
+            }
         </ListActors>
 
     )
