@@ -17,6 +17,7 @@ import { NavItemLink } from 'components/Layout/Layout.styled';
 
 
 export const MovieDetails = () =>{
+
     const {movieId} = useParams();
     const [movie, setMovie] = useState(null);
     const [error, setError] = useState(false);
@@ -31,7 +32,6 @@ export const MovieDetails = () =>{
         const getMovie = async movieId =>{
             
             try {
-                
 
                 const resp = await getMovieById(movieId);
                 const data = resp.data;
@@ -111,8 +111,8 @@ export const MovieDetails = () =>{
                             <Text>Additional information</Text>
                             <div>
                                 <AddList>
-                                    <ItemAddList><NavItemLink to={'cast'}>Cast</NavItemLink></ItemAddList>
-                                    <ItemAddList><NavItemLink to={'reviews'}>Reviews</NavItemLink></ItemAddList>
+                                    <ItemAddList><NavItemLink to={'cast'} >Cast</NavItemLink></ItemAddList>
+                                    <ItemAddList><NavItemLink to={'reviews'} >Reviews</NavItemLink></ItemAddList>
                                 </AddList>
                                 <Outlet/>
                             </div>
