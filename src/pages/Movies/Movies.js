@@ -8,6 +8,7 @@ import ListMovies from '../../components/ListMovies/ListMovies';
 import { Loader } from 'components/Loader/Loader';
 
 import 'react-toastify/dist/ReactToastify.css';
+import Container from 'components/Container/Conteiner.styled';
 
 
 const Movies = () =>{
@@ -75,13 +76,20 @@ const Movies = () =>{
     }
 
     return(
-        <div>
+        <Container
+            display = 'flex'
+            flexDirection ='column'
+            justifyContent='center'
+            alignItems='center'
+
+            margin = '50px'
+        >
             <SearchBox 
                 handleChangeInput =  {handleChangeInput}
                 handleSubmit = {handleSubmit}
             />
            {loader ? <Loader/> : <ListMovies movies = {data}/>}
-        </div>
+        </Container>
     )
 };
 

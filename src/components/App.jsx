@@ -1,6 +1,9 @@
+import { ThemeProvider } from 'styled-components';
 import { Route, Routes } from "react-router-dom";
 import Layout from "./Layout/Layout";
 import {  ToastContainer } from 'react-toastify';
+
+import { theme } from '../theme/theme';
 
 import { MovieDetails } from "pages/MovieDetails/MovieDetails";
 import { lazy } from "react";
@@ -15,17 +18,19 @@ export const App = () => {
 
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Layout/>}>
-          <Route index element={<Home/>}/>
-          <Route path="movies" element={<Movies/>}/>
-          <Route path="/movies/:movieId" element={<MovieDetails/>}>
-              <Route path="cast" element={<Cast/>}/>
-              <Route path="reviews" element={<Reviews/>}/>
+      <ThemeProvider theme={theme}>
+          <Routes>
+            <Route path="/" element={<Layout/>}>
+              <Route index element={<Home/>}/>
+              <Route path="movies" element={<Movies/>}/>
+              <Route path="/movies/:movieId" element={<MovieDetails/>}>
+                  <Route path="cast" element={<Cast/>}/>
+                  <Route path="reviews" element={<Reviews/>}/>
+                </Route>
             </Route>
-        </Route>
-      </Routes>
-      <ToastContainer autoClose={3000}/>
+          </Routes>
+          <ToastContainer autoClose={3000}/>
+      </ThemeProvider>
   </>
     
   );

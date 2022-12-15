@@ -24,10 +24,13 @@ export const Span = styled.span`
 `;
 
 export const AddList = styled.ul`
-  
+  list-style: none;
 `;
 
 export const ItemAddList = styled.li`
+
+    margin: 10px;
+    text-decoration: none;
   
 `;
 

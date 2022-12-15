@@ -8,6 +8,10 @@ import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import { AddList, Img, ItemAddList, PrimaryTitle, SecondTitle, Span, Text } from "./MovieDetails.styled";
 
 import 'react-toastify/dist/ReactToastify.css';
+import Container from 'components/Container/Conteiner.styled';
+import { NavItemLink } from 'components/Layout/Layout.styled';
+
+
 
 
 
@@ -74,36 +78,48 @@ export const MovieDetails = () =>{
     
     
     return(
-        <div>
+        <Container>
             {loader 
                 ? <Loader/> 
-                : <div>
-                        <div>
-                            <BackBtn type="button" location ={location}/>
-                            <Img src={`https://image.tmdb.org/t/p/w500${backdrop_path}`} alt={title}/>
-                        </div>
-                        <div>
-                            <PrimaryTitle>{title}<Span>({releaseYear[0]})</Span></PrimaryTitle>
-                            <SecondTitle>Overview</SecondTitle>
-                            <Text>{overview}</Text>
-                            <SecondTitle>Genres</SecondTitle>
-                            <Text>{genres.map(item => item.name).join(', ')}</Text>
-                        </div>
-                        <div>
+                : <Container>
+                        <Container
+                            display="flex"
+                            >
+                            <Container 
+                                display="flex"
+                                justifyContent='center'
+                                alignItems='center'
+                                margin= '15px'
+                            >
+                                <BackBtn type="button" location ={location}/>
+                                <Img src={`https://image.tmdb.org/t/p/w500${backdrop_path}`} alt={title}/>
+                            </Container>
+                            <div>
+                                <PrimaryTitle>{title}<Span>({releaseYear[0]})</Span></PrimaryTitle>
+                                <SecondTitle>Overview</SecondTitle>
+                                <Text>{overview}</Text>
+                                <SecondTitle>Genres</SecondTitle>
+                                <Text>{genres.map(item => item.name).join(', ')}</Text>
+                            </div>
+                        </Container>
+                        <Container
+                            marginLeft='20px'
+                            bg='rgb(4,120,128, 0.2)'
+                        >
                             <Text>Additional information</Text>
                             <div>
                                 <AddList>
-                                    <ItemAddList><Link to={'cast'}>Cast</Link></ItemAddList>
-                                    <ItemAddList><Link to={'reviews'}>Reviews</Link></ItemAddList>
+                                    <ItemAddList><NavItemLink to={'cast'}>Cast</NavItemLink></ItemAddList>
+                                    <ItemAddList><NavItemLink to={'reviews'}>Reviews</NavItemLink></ItemAddList>
                                 </AddList>
                                 <Outlet/>
                             </div>
 
-                        </div>
+                        </Container>
                 
-                    </div>
+                    </Container>
             }
             
-        </div>
+        </Container>
     )
 }

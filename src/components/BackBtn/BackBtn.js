@@ -1,14 +1,13 @@
-import { ButtonBack, Container } from "./BackBtn.styled"
+import { ButtonBack } from "./BackBtn.styled"
 
 
 
 export const BackBtn = ({location}) =>{
     console.log(location)
     return(
-        <Container>
+        <div>
             <ButtonBack  to={location.state?.from ?? "/"} >Go Back</ButtonBack>
-
-        </Container>
+        </div>
     )
 }
 

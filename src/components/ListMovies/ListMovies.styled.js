@@ -4,8 +4,9 @@ import { Link } from "react-router-dom"
 export const List = styled.ul`
   display: flex;
   flex-direction: column;
-
   align-items: center;
+
+  padding: 0;
 `;
 
 export const Item = styled.li`

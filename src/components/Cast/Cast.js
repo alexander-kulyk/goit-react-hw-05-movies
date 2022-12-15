@@ -11,10 +11,6 @@ const Cast = () =>{
 
     const {movieId} = useParams();
     const [cast, setCast] = useState(null);
-    console.log(movieId)
-
-    
-
 
     useEffect(() => {
       const getCast = async movieId =>{

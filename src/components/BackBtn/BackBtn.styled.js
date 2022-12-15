@@ -4,13 +4,20 @@ import styled from "styled-components";
 
 
 export const ButtonBack = styled(Link)`
-  border: 1px solid black;
+  position: absolute;
+  top: 10%;
+
+
+  
   border-radius: 5px;
   padding: 5px;
-  background-color: blue;
+  background-color: rgb(4,120,128);
   color: white;
+
+  text-decoration: none;
+
+  :hover{
+    transform: scale(1.1)
+  }
 `;
 
-export const Container = styled.div`
-  margin: 10px
-`;

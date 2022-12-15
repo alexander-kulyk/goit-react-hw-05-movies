@@ -1,6 +1,5 @@
-import { Form, Input, SearchBtn } from "./SearchBox.styled"
-
-
+import PropTypes from 'prop-types';
+import { Form, Input, SearchBtn } from "./SearchBox.styled";
 
 
 export const SearchBox = ({handleChangeInput, handleSubmit}) =>{
@@ -14,9 +13,6 @@ export const SearchBox = ({handleChangeInput, handleSubmit}) =>{
         handleSubmit()
     }
 
-
-
-
     return(
         <Form onSubmit={onSubmitForm}>
             <Input 
@@ -26,4 +22,9 @@ export const SearchBox = ({handleChangeInput, handleSubmit}) =>{
             <SearchBtn type="Submit">Submit</SearchBtn>
         </Form>
     )
+};
+
+SearchBox.propTypes = {
+    handleChangeInput: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
 }
