@@ -71,7 +71,8 @@ export const MovieDetails = () =>{
         genres, 
         title, 
         release_date, 
-        overview 
+        overview,
+        vote_average
     } = movie
 
     const releaseYear = release_date?.split('-')
@@ -96,6 +97,7 @@ export const MovieDetails = () =>{
                             </Container>
                             <div>
                                 <PrimaryTitle>{title}<Span>({releaseYear[0]})</Span></PrimaryTitle>
+                                <SecondTitle>Score: <span>{vote_average.toFixed(1)}</span></SecondTitle>
                                 <SecondTitle>Overview</SecondTitle>
                                 <Text>{overview}</Text>
                                 <SecondTitle>Genres</SecondTitle>
