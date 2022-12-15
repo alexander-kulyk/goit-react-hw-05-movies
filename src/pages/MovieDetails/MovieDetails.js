@@ -4,7 +4,7 @@ import { getMovieById } from "API/fetchMovies";
 import { BackBtn } from "components/BackBtn/BackBtn";
 import { Loader } from "components/Loader/Loader";
 import { useState, useEffect } from "react";
-import { Link, Outlet, useLocation, useParams } from "react-router-dom";
+import { Outlet, useLocation, useParams } from "react-router-dom";
 import { AddList, Img, ItemAddList, PrimaryTitle, SecondTitle, Span, Text } from "./MovieDetails.styled";
 
 import 'react-toastify/dist/ReactToastify.css';
