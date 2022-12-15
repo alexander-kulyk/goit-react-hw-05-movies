@@ -51,9 +51,8 @@ const Cast = () =>{
                return <ItemActors key={id}>
                   <ActorProfile src={image} alt={original_name}/>
                   <ActorName>{original_name}</ActorName>
-                </ItemActors>
-              })
-            : <Message>No Cast</Message>
+                </ItemActors>})
+              : <Message>No Cast</Message>
             }
         </ListActors>
 
