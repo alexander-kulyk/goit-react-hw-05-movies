@@ -6,10 +6,11 @@ import { Loader } from "components/Loader/Loader";
 import { useState, useEffect } from "react";
 import { Outlet, useLocation, useParams } from "react-router-dom";
 import { AddList, Img, ItemAddList, PrimaryTitle, SecondTitle, Span, Text } from "./MovieDetails.styled";
-
-import 'react-toastify/dist/ReactToastify.css';
 import Container from 'components/Container/Conteiner.styled';
 import { NavItemLink } from 'components/Layout/Layout.styled';
+
+import 'react-toastify/dist/ReactToastify.css';
+import picture from '../../picture/no-img.jpg';
 
 
 
@@ -75,7 +76,12 @@ export const MovieDetails = () =>{
         vote_average
     } = movie
 
-    const releaseYear = release_date?.split('-')
+    const releaseYear = release_date?.split('-');
+    
+    let img
+    backdrop_path 
+        ? img = `https://image.tmdb.org/t/p/w500${backdrop_path}`
+        : img = picture
     
     
     return(
@@ -93,7 +99,7 @@ export const MovieDetails = () =>{
                                 margin= '15px'
                             >
                                 <BackBtn type="button" location ={location}/>
-                                <Img src={`https://image.tmdb.org/t/p/w500${backdrop_path}`} alt={title}/>
+                                <Img src={img} alt={title} width ='600px'/>
                             </Container>
                             <div>
                                 <PrimaryTitle>{title}<Span>({releaseYear[0]})</Span></PrimaryTitle>

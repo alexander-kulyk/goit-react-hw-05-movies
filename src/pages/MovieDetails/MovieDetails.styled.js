@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 
 export const Img = styled.img`
-  
+  width: 600px
 `;
 
 export const PrimaryTitle = styled.h1`
