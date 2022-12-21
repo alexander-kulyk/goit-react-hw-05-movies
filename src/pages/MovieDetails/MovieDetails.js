@@ -3,9 +3,9 @@ import { toast } from 'react-toastify';
 import { getMovieById } from "API/fetchMovies";
 import { BackBtn } from "components/BackBtn/BackBtn";
 import { Loader } from "components/Loader/Loader";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Outlet, useLocation, useParams } from "react-router-dom";
-import { AddList, Img, ItemAddList, PrimaryTitle, SecondTitle, Span, Text } from "./MovieDetails.styled";
+import { AddInfotm, AddList, Img, ItemAddList, PrimaryTitle, SecondTitle, Span, Text } from "./MovieDetails.styled";
 import Container from 'components/Container/Conteiner.styled';
 import { NavItemLink } from 'components/Layout/Layout.styled';
 
@@ -25,6 +25,11 @@ export const MovieDetails = () =>{
     const [loader, setLoader] = useState(false);
 
     const location = useLocation();
+    const backLinkHref = location.state?.from ?? "/movies"
+    const bLHr = useRef(backLinkHref);
+
+
+    console.log(location)
    
     useEffect(() => {
 
@@ -55,7 +60,7 @@ export const MovieDetails = () =>{
       
     }, [ movieId])
 
-    if (error ) {
+    if (error) {
         return(
             <PrimaryTitle>Something is wrong! Try another movie</PrimaryTitle>
         )
@@ -98,7 +103,7 @@ export const MovieDetails = () =>{
                                 alignItems='center'
                                 margin= '15px'
                             >
-                                <BackBtn type="button" location ={location}/>
+                                <BackBtn type="button" location ={bLHr.current}/>
                                 <Img src={img} alt={title} width ='600px'/>
                             </Container>
                             <div>
@@ -112,9 +117,10 @@ export const MovieDetails = () =>{
                         </Container>
                         <Container
                             marginLeft='20px'
+                            paddingTop='10px'
                             bg='rgb(4,120,128, 0.2)'
                         >
-                            <Text>Additional information</Text>
+                            <AddInfotm>Additional information</AddInfotm>
                             <div>
                                 <AddList>
                                     <ItemAddList><NavItemLink to={'cast'} >Cast</NavItemLink></ItemAddList>
