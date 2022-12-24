@@ -31,11 +31,11 @@ const Movies = () =>{
             return
         }
 
-      const getMovies = async query  =>{
+      const getMovies = async filterParam  =>{
 
             try {
                 setLoader(true)
-                const resp = await getSearchMovie(query);
+                const resp = await getSearchMovie(filterParam);
                 const data = resp.data.results;
 
                 setData(data);
@@ -52,7 +52,8 @@ const Movies = () =>{
             }
         }
 
-      getMovies(filterParam)
+      getMovies(filterParam);
+      
     }, [filterParam])
     
 

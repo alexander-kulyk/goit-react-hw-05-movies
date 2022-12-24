@@ -2,9 +2,7 @@ import { ThemeProvider } from 'styled-components';
 import { Route, Routes } from "react-router-dom";
 import Layout from "./Layout/Layout";
 import {  ToastContainer } from 'react-toastify';
-
 import { theme } from '../theme/theme';
-
 import { MovieDetails } from "pages/MovieDetails/MovieDetails";
 import { lazy } from "react";
 

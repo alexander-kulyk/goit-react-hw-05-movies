@@ -27,9 +27,6 @@ export const MovieDetails = () =>{
     const location = useLocation();
     const backLinkHref = location.state?.from ?? "/movies"
     const bLHr = useRef(backLinkHref);
-
-
-    console.log(location)
    
     useEffect(() => {
 
